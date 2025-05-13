@@ -1,0 +1,165 @@
+import { useState, useEffect } from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { ChevronLeft, ChevronRight, Moon, Sun } from "lucide-react";
+
+const eventsData = {
+  "2021-09-07": [
+    {
+      time: "08.00 - 10.00 PM",
+      title: "Retrieve Client Data",
+      location: "Marisini Coffee Shop",
+    },
+    {
+      time: "11.00 - 13.00 PM",
+      title: "Brainstorming Creative Team",
+      location: "Marisini Coffee Shop",
+    },
+    {
+      time: "13.30 - 15.00 PM",
+      title: "Wireframing UI Uplabs App",
+      location: "Marisini Coffee Shop",
+    },
+    {
+      time: "16.00 - 18.30 PM",
+      title: "User Flow Client",
+      location: "Marisini Coffee Shop",
+    },
+    {
+      time: "20.00 - 22.00 PM",
+      title: "Drinking Coffee with Friends",
+      location: "Marisini Coffee Shop",
+    },
+  ],
+  "2021-09-08": [
+    {
+      time: "10.00 - 12.00 PM",
+      title: "Team Meeting",
+      location: "Zoom Meeting",
+    },
+    {
+      time: "14.00 - 16.00 PM",
+      title: "Code Review",
+      location: "Online",
+    },
+    {
+      time: "17.00 - 18.00 PM",
+      title: "Update Documentation",
+      location: "Notion",
+    },
+  ],
+  "2021-09-09": [
+    {
+      time: "09.00 - 10.30 AM",
+      title: "Daily Standup + Sprint Planning",
+      location: "Google Meet",
+    },
+    {
+      time: "11.00 - 01.00 PM",
+      title: "Feature Implementation: Onboarding Form",
+      location: "VS Code / GitHub",
+    },
+    {
+      time: "03.00 - 05.00 PM",
+      title: "Design Review & Feedback Session",
+      location: "Figma / Teams",
+    },
+  ],
+  "2021-09-10": [
+    {
+      time: "09.30 - 11.30 AM",
+      title: "Prepare Slide Deck for Demo",
+      location: "Canva",
+    },
+    {
+      time: "13.00 - 15.00 PM",
+      title: "Bug Fixing - User Authentication",
+      location: "VS Code",
+    },
+    {
+      time: "15.30 - 17.00 PM",
+      title: "Sync with Backend Team",
+      location: "Google Meet",
+    },
+    {
+      time: "Due by EOD",
+      title: "Submit Feature PR for Review",
+      location: "GitHub",
+    },
+  ],
+};
+
+export default function SchedulePage() {
+  const today = new Date().toISOString().split("T")[0];
+  const [currentDate, setCurrentDate] = useState(today);
+  const [darkMode, setDarkMode] = useState(false);
+
+  const formatDate = (dateStr) => {
+    const date = new Date(dateStr);
+    return date.toLocaleDateString("en-GB", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    });
+  };
+
+  const handlePrev = () => {
+    const newDate = new Date(currentDate);
+    newDate.setDate(newDate.getDate() - 1);
+    setCurrentDate(newDate.toISOString().split("T")[0]);
+  };
+
+  const handleNext = () => {
+    const newDate = new Date(currentDate);
+    newDate.setDate(newDate.getDate() + 1);
+    setCurrentDate(newDate.toISOString().split("T")[0]);
+  };
+
+  const toggleDarkMode = () => {
+    setDarkMode((prev) => !prev);
+  };
+
+  const events = eventsData[currentDate] || [];
+
+  return (
+    <div className={
+      `min-h-screen p-6 max-w-2xl mx-auto space-y-4 transition-colors duration-300 ` +
+      (darkMode ? "bg-gray-900 text-white" : "bg-white text-gray-900")
+    }>
+      <div className="flex items-center justify-between">
+        <Button variant="ghost" onClick={handlePrev}>
+          <ChevronLeft className="w-5 h-5" />
+        </Button>
+        <h1 className="text-lg font-semibold">{formatDate(currentDate)}</h1>
+        <Button variant="ghost" onClick={handleNext}>
+          <ChevronRight className="w-5 h-5" />
+        </Button>
+      </div>
+
+      <div className="flex justify-end">
+        <Button variant="ghost" onClick={toggleDarkMode}>
+          {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+        </Button>
+      </div>
+
+      {events.length === 0 ? (
+        <p className="text-center text-gray-500 dark:text-gray-400">
+          No events for this day.
+        </p>
+      ) : (
+        events.map((event, idx) => (
+          <Card
+            key={idx}
+            className={`shadow-md rounded-xl ${darkMode ? "bg-gray-800" : "bg-white"}`}
+          >
+            <CardContent className="p-4 space-y-1">
+              <p className="text-sm text-gray-500 dark:text-gray-400">{event.time}</p>
+              <h2 className="text-md font-semibold">{event.title}</h2>
+              <p className="text-sm text-gray-400 dark:text-gray-500">{event.location}</p>
+            </CardContent>
+          </Card>
+        ))
+      )}
+    </div>
+  );
+}

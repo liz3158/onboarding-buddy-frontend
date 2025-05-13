@@ -1,0 +1,33 @@
+.app-container {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--background-color);
+  color: var(--base-text-color);
+
+  .main-content {
+    flex: 1;
+    // padding: 50px 58px;
+    margin-left: 260px;
+    transition: all 0.3s ease;
+    background-color: var(--background-color);
+    
+    @media (max-width: 1400px) {
+      padding: 32px;
+    }
+
+    @media (max-width: 1200px) {
+      margin-left: 80px;
+      padding: 24px;
+    }
+
+    @media (max-width: 768px) {
+      margin-left: 0;
+      padding: 24px;
+    }
+
+    &.sidebar-collapsed {
+      margin-left: 80px;
+    }
+  }
+} 

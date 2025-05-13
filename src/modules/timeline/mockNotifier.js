@@ -1,0 +1,1 @@
+export const sendNudge = () => console.log('Nudge sent');

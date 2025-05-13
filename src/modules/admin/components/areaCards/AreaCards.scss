@@ -1,0 +1,146 @@
+.content-area-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 12px;
+  gap: 16px;
+
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 576px) {
+    grid-template-columns: 100%;
+  }
+
+  .area-card {
+    background-color: rgba(255, 255, 255, 0.95);
+    display: flex;
+    align-items: center;
+    border-radius: 12px;
+    padding: 24px;
+    justify-content: space-between;
+    box-shadow: 0 4px 20px rgba(74, 108, 247, 0.08);
+    border: 1px solid rgba(74, 108, 247, 0.15);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, 
+        rgba(74, 108, 247, 0.1) 0%,
+        rgba(74, 108, 247, 0) 50%,
+        rgba(74, 108, 247, 0.1) 100%
+      );
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 30px rgba(74, 108, 247, 0.15);
+      border-color: rgba(74, 108, 247, 0.3);
+
+      &::before {
+        opacity: 1;
+      }
+    }
+
+    .dark-mode & {
+      background-color: rgba(30, 33, 58, 0.95);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      border-color: rgba(74, 108, 247, 0.2);
+
+      &:hover {
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+        border-color: rgba(74, 108, 247, 0.3);
+      }
+    }
+
+    @media (max-width: 768px) {
+      padding: 20px;
+    }
+
+    .info-title {
+      color: var(--text-primary);
+      font-size: 18px;
+      margin-bottom: 8px;
+      font-weight: 600;
+      background: linear-gradient(135deg, #4a6cf7, #5d3be7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.2;
+      letter-spacing: -0.5px;
+
+      .dark-mode & {
+        background: linear-gradient(135deg, #5d3be7, #4a6cf7);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+
+    .info-value {
+      color: var(--text-primary);
+      font-weight: 700;
+      font-size: 28px;
+      margin-bottom: 8px;
+      background: linear-gradient(135deg, #4a6cf7, #5d3be7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.2;
+
+      .dark-mode & {
+        background: linear-gradient(135deg, #5d3be7, #4a6cf7);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+
+    .info-text {
+      color: var(--text-secondary);
+      font-weight: 500;
+      font-size: 14px;
+      opacity: 0.9;
+
+      .dark-mode & {
+        color: var(--text-muted);
+      }
+    }
+  }
+}
+
+// global recharts tooltip customization
+.recharts-default-tooltip {
+  padding: 4px 8px !important;
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 4px 12px !important;
+  border-radius: 4px !important;
+  background-color: var(--secondary-color) !important;
+  border: 1px solid var(--border-color-inverted) !important;
+
+  .dark-mode & {
+    padding: 8px 12px !important;
+    box-shadow: var(--card-shadow) !important;
+    border-radius: 6px !important;
+    background-color: var(--card-bg) !important;
+    border: 1px solid var(--card-border) !important;
+  }
+}
+
+.recharts-tooltip-item-list {
+  * {
+    color: var(--text-color-inverted) !important;
+    font-size: 14px;
+    font-family: inherit !important;
+    opacity: 0.9;
+
+    .dark-mode & {
+      color: var(--text-primary) !important;
+    }
+  }
+}

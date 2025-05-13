@@ -1,0 +1,504 @@
+.about-me {
+  width: 100%;
+  min-height: 100vh;
+  padding: 2rem;
+  background: var(--bg-primary);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../../assets/images/background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.1;
+    z-index: 0;
+  }
+
+  .about-me-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  
+  // Profile header with backdrop and avatar
+  .profile-header {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    background: var(--bg-secondary);
+    box-shadow: 0 8px 30px rgba(74, 108, 247, 0.12), 0 2px 4px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(74, 108, 247, 0.1);
+    
+    .profile-backdrop {
+      height: 200px;
+      background: linear-gradient(135deg, #4A6CF7, #2541B2);
+    }
+    
+    .profile-avatar-wrapper {
+      position: absolute;
+      left: 2rem;
+      bottom: 2rem;
+      border: 4px solid var(--bg-secondary);
+      border-radius: 50%;
+      box-shadow: 0 8px 30px rgba(74, 108, 247, 0.12);
+      background: var(--bg-secondary);
+      padding: 4px;
+      z-index: 2;
+      
+      &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        padding: 2px;
+        background: linear-gradient(135deg, #4A6CF7, #2541B2);
+        -webkit-mask: 
+          linear-gradient(#fff 0 0) content-box, 
+          linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+      }
+    }
+    
+    .profile-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #4A6CF7, #2541B2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      box-shadow: 0 8px 30px rgba(74, 108, 247, 0.12);
+      position: relative;
+      overflow: hidden;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+        border-radius: 50%;
+      }
+      
+      .avatar-icon {
+        font-size: 3rem;
+        position: relative;
+        z-index: 1;
+      }
+    }
+    
+    .profile-details {
+      margin-left: 12rem;
+      padding: 2rem;
+      position: relative;
+      z-index: 1;
+      margin-top: 2rem;
+      
+      h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, #4A6CF7, #2541B2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin: 0 0 1rem 0;
+      }
+      
+      .profile-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        color: var(--text-secondary);
+        
+        span {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+  
+  // Tabs navigation
+  .profile-tabs {
+    display: flex;
+    margin-bottom: 2rem;
+    gap: 1rem;
+    
+    .tab-button {
+      padding: 0.75rem 1.5rem;
+      background: var(--bg-secondary);
+      border: 1px solid rgba(74, 108, 247, 0.1);
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(74, 108, 247, 0.15);
+        color: var(--primary-color);
+      }
+      
+      &.active {
+        background: linear-gradient(135deg, #4A6CF7, #2541B2);
+        color: white;
+        border: none;
+        box-shadow: 0 4px 12px rgba(74, 108, 247, 0.2);
+      }
+    }
+  }
+  
+  // Profile content
+  .profile-content {
+    margin-bottom: 2rem;
+  }
+  
+  // Overview tab styles
+  .profile-overview {
+    display: grid;
+    gap: 2rem;
+  }
+  
+  // Summary stats card
+  .profile-summary-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    background: var(--bg-secondary);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 30px rgba(74, 108, 247, 0.12), 0 2px 4px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(74, 108, 247, 0.1);
+    
+    .summary-stat {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      
+      .summary-icon {
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        border-radius: 12px;
+        background: rgba(74, 108, 247, 0.1);
+        color: var(--primary-color);
+      }
+      
+      .stat-details {
+        display: flex;
+        flex-direction: column;
+        
+        .stat-value {
+          font-size: 1.5rem;
+          font-weight: 700;
+          background: linear-gradient(135deg, #4A6CF7, #2541B2);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+        
+        .stat-label {
+          font-size: 0.875rem;
+          color: var(--text-secondary);
+        }
+      }
+    }
+  }
+  
+  // Bio card
+  .profile-bio-card {
+    background: var(--bg-secondary);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 30px rgba(74, 108, 247, 0.12), 0 2px 4px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(74, 108, 247, 0.1);
+    
+    h4 {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.25rem;
+      font-weight: 600;
+      background: linear-gradient(135deg, #4A6CF7, #2541B2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: 0 0 1rem 0;
+    }
+    
+    p {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin: 0;
+    }
+  }
+  
+  // Skills and interests grid
+  .profile-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+  
+  // Generic card style
+  .profile-card {
+    background: var(--bg-secondary);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 30px rgba(74, 108, 247, 0.12), 0 2px 4px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(74, 108, 247, 0.1);
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(74, 108, 247, 0.15);
+    }
+    
+    h4 {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.25rem;
+      font-weight: 600;
+      background: linear-gradient(135deg, #4A6CF7, #2541B2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: 0 0 1rem 0;
+    }
+  }
+  
+  // Tags for skills and interests
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    
+    .tag {
+      padding: 0.5rem 1rem;
+      background: rgba(74, 108, 247, 0.1);
+      color: var(--primary-color);
+      border-radius: 8px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      
+      &:hover {
+        background: rgba(74, 108, 247, 0.2);
+        transform: translateY(-2px);
+      }
+    }
+  }
+  
+  // Support team card
+  .support-card {
+    .support-team {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .support-member {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      background: rgba(74, 108, 247, 0.05);
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      
+      &:hover {
+        background: rgba(74, 108, 247, 0.1);
+        transform: translateY(-2px);
+      }
+      
+      .support-avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        color: white;
+        font-size: 1.25rem;
+      }
+      
+      .mentor-avatar {
+        background: linear-gradient(135deg, #8B5CF6, #6D28D9);
+      }
+      
+      .buddy-avatar {
+        background: linear-gradient(135deg, #EC4899, #BE185D);
+      }
+      
+      .support-details {
+        display: flex;
+        flex-direction: column;
+        
+        .support-name {
+          font-weight: 600;
+          color: var(--text-primary);
+          font-size: 1rem;
+        }
+        
+        .support-role {
+          font-size: 0.875rem;
+          color: var(--text-secondary);
+        }
+      }
+    }
+  }
+  
+  // Achievements styles
+  .achievements-container {
+    display: grid;
+    gap: 2rem;
+    
+    .achievements-header {
+      background: var(--bg-secondary);
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 8px 30px rgba(74, 108, 247, 0.12), 0 2px 4px rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(74, 108, 247, 0.1);
+      
+      h4 {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 1.25rem;
+        font-weight: 600;
+        background: linear-gradient(135deg, #4A6CF7, #2541B2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin: 0 0 0.5rem 0;
+      }
+      
+      p {
+        color: var(--text-secondary);
+        margin: 0;
+        font-size: 0.875rem;
+      }
+    }
+    
+    .achievements-list {
+      display: grid;
+      gap: 1.5rem;
+    }
+    
+    .achievement-card {
+      background: var(--bg-secondary);
+      border-radius: 16px;
+      padding: 1.5rem;
+      display: flex;
+      gap: 1.5rem;
+      box-shadow: 0 8px 30px rgba(74, 108, 247, 0.12), 0 2px 4px rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(74, 108, 247, 0.1);
+      transition: all 0.3s ease;
+      
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 40px rgba(74, 108, 247, 0.15);
+      }
+      
+      .achievement-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: rgba(249, 115, 22, 0.1);
+        color: #F97316;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+      }
+      
+      .achievement-details {
+        flex: 1;
+        
+        h5 {
+          font-size: 1.125rem;
+          font-weight: 600;
+          color: var(--text-primary);
+          margin: 0 0 0.5rem 0;
+        }
+        
+        p {
+          font-size: 0.875rem;
+          color: var(--text-secondary);
+          margin: 0 0 0.5rem 0;
+          line-height: 1.5;
+        }
+        
+        .achievement-date {
+          font-size: 0.75rem;
+          color: var(--text-muted);
+        }
+      }
+    }
+  }
+}
+
+// Dark mode styles
+body.dark-mode .about-me {
+  .profile-header {
+    .profile-avatar-wrapper {
+      border-color: var(--bg-secondary);
+    }
+  }
+  
+  .support-member {
+    background: rgba(74, 108, 247, 0.05);
+  }
+}
+
+// Responsive styles
+@media (max-width: 768px) {
+  .about-me {
+    padding: 1rem;
+    
+    .profile-header {
+      .profile-avatar-wrapper {
+        position: static;
+        display: flex;
+        justify-content: center;
+        margin: -1rem auto 1rem;
+        width: fit-content;
+      }
+      
+      .profile-details {
+        margin-left: 0;
+        text-align: center;
+        padding-top: 0;
+        margin-top: 1rem;
+        
+        .profile-meta {
+          justify-content: center;
+        }
+      }
+    }
+    
+    .profile-summary-card,
+    .profile-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .support-card .support-team {
+      grid-template-columns: 1fr;
+    }
+  }
+}

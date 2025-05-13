@@ -1,0 +1,92 @@
+/* Loader styles */
+.loader {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.loader-spinner {
+  display: flex;
+  gap: 4px;
+}
+
+.loader-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  animation: bounce 1.4s infinite ease-in-out both;
+}
+
+.loader-dot:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.loader-dot:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes bounce {
+  0%, 80%, 100% { 
+    transform: scale(0);
+  } 
+  40% { 
+    transform: scale(1.0);
+  }
+}
+
+/* Loader sizes */
+.loader-small .loader-dot {
+  width: 6px;
+  height: 6px;
+}
+
+.loader-medium .loader-dot {
+  width: 8px;
+  height: 8px;
+}
+
+.loader-large .loader-dot {
+  width: 12px;
+  height: 12px;
+}
+
+/* Loader colors */
+.loader-primary .loader-dot {
+  background-color: #0ea5e9;
+}
+
+.loader-secondary .loader-dot {
+  background-color: #64748b;
+}
+
+.loader-white .loader-dot {
+  background-color: #ffffff;
+}
+
+/* Loader text */
+.loader-text {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.loader-small .loader-text {
+  font-size: 12px;
+}
+
+.loader-medium .loader-text {
+  font-size: 14px;
+}
+
+.loader-large .loader-text {
+  font-size: 16px;
+}
+
+/* Dark mode */
+.dark-mode .loader-primary .loader-dot {
+  background-color: #38bdf8;
+}
+
+.dark-mode .loader-secondary .loader-dot {
+  background-color: #94a3b8;
+} 

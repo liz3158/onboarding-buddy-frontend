@@ -1,0 +1,212 @@
+.content-area-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+
+  .area-top-title {
+    color: var(--text-color-inverted);
+    font-size: 1.5rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, #4a6cf7, #5d3be7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+    text-shadow: 0 2px 10px rgba(74, 108, 247, 0.2);
+
+    .dark-mode & {
+      background: linear-gradient(135deg, #5d3be7, #4a6cf7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 2px 10px rgba(93, 59, 231, 0.3);
+    }
+  }
+
+  .area-top-l {
+    display: flex;
+    align-items: center;
+    column-gap: 6px;
+  }
+
+  .area-top-r {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .top-buttons {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .top-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    background: var(--bg-secondary);
+    color: var(--text-color-inverted);
+    border: 1px solid rgba(74, 108, 247, 0.2);
+    font-size: 0.9rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(74, 108, 247, 0.1);
+
+    &:hover {
+      background: var(--bg-tertiary);
+      box-shadow: 0 6px 20px rgba(74, 108, 247, 0.15);
+      border-color: rgba(74, 108, 247, 0.3);
+    }
+
+    .dark-mode & {
+      border-color: rgba(74, 108, 247, 0.3);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+
+      &:hover {
+        box-shadow: 0 6px 20px rgba(74, 108, 247, 0.25);
+      }
+    }
+  }
+
+  .notification-btn {
+    position: relative;
+    padding: 0.5rem;
+
+    .notification-badge {
+      position: absolute;
+      top: -0.25rem;
+      right: -0.25rem;
+      background: #475be8;
+      color: white;
+      border-radius: 1rem;
+      padding: 0.1rem 0.4rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(74, 108, 247, 0.3);
+    }
+  }
+
+  .add-hire-btn {
+    background: #475be8;
+    color: white;
+    border: none;
+    padding: 0.5rem 1.25rem;
+    box-shadow: 0 4px 15px rgba(74, 108, 247, 0.3);
+
+    &:hover {
+      background: #3b4ccc;
+      box-shadow: 0 6px 20px rgba(74, 108, 247, 0.4);
+    }
+  }
+
+  .sidebar-open-btn {
+    display: inline-flex;
+    align-items: center;
+    display: none;
+    margin-bottom: -1px;
+    color: var(--text-color-inverted);
+
+    @media (max-width: 768px) {
+      display: inline-flex;
+    }
+  }
+
+  // react-date-range plugin theme customization
+  .date-range-wrapper {
+    display: inline-block;
+    box-shadow: var(--light-shadow1);
+
+    .rdrDateDisplay {
+      margin: 0;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .rdrDateRangeWrapper {
+      position: relative;
+    }
+
+    .rdrMonthAndYearWrapper {
+      position: absolute;
+      top: 100%;
+      width: 100%;
+      background-color: var(--light-color);
+      padding-top: 0;
+      height: 40px;
+      z-index: 1;
+    }
+
+    .rdrMonth {
+      padding: 0;
+      z-index: 1;
+    }
+
+    .rdrWeekDays {
+      position: absolute;
+      top: calc(100% + 40px);
+      left: 0;
+      width: 100%;
+      background-color: var(--light-color);
+      height: 32px;
+      z-index: 1;
+    }
+
+    .rdrDays {
+      position: absolute;
+      top: calc(100% + 40px + 32px);
+      left: 0;
+      width: 100%;
+      background-color: var(--light-color);
+      z-index: 1;
+    }
+
+    &.hide-date-range {
+      .rdrMonthAndYearWrapper {
+        display: none;
+      }
+      .rdrMonth {
+        padding: 0;
+      }
+      .rdrWeekDays,
+      .rdrDays {
+        display: none;
+      }
+    }
+
+    .rdrDateDisplayWrapper {
+      background-color: var(--secondary-color);
+      border-color: var(--secondary-color);
+      outline: var(--secondary-color);
+
+      * {
+        background-color: var(--secondary-color);
+        border-color: var(--secondary-color);
+        outline: var(--secondary-color);
+        box-shadow: none;
+        color: var(--base-text-color);
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .content-area-top {
+    .top-buttons {
+      gap: 0.5rem;
+    }
+
+    .top-button span {
+      display: none;
+    }
+
+    .add-hire-btn {
+      padding: 0.5rem;
+    }
+  }
+}

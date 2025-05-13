@@ -1,0 +1,1 @@
+export const useUserProfile = () => ({ name: 'Ryan', level: 'Junior' });

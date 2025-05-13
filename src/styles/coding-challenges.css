@@ -1,0 +1,296 @@
+/* Coding Challenges Container */
+.challenges-container {
+    border-radius: 12px;
+    box-shadow: 0 2px 10px var(--shadow-color);
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 1px;
+    background-color: var(--border-color);
+    padding: 0;
+}
+
+/* Challenge Panel Styles */
+.challenge-panel {
+    background-color: var(--bg-chat);
+    min-height: 100%;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    color: var(--text-primary);
+}
+
+.challenge-panel h2 {
+    color: var(--text-primary);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.challenge-panel p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    flex-grow: 1;
+}
+
+.challenge-panel select {
+    background-color: var(--input-bg);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 0.375rem;
+}
+
+.generate-button {
+    background-color: var(--bg-message-sent);
+    color: var(--text-message-sent);
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    margin-top: 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.generate-button:hover {
+    background-color: var(--bg-message-sent);
+    filter: brightness(110%);
+    transform: translateY(-1px);
+}
+
+.generate-button:active {
+    transform: translateY(0);
+}
+
+/* Code Editor Styles */
+.code-editor-section {
+    background-color: var(--bg-chat);
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+.code-editor {
+    background-color: #2b2d35;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.code-editor-header {
+    background-color: var(--bg-chat);
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.code-editor-header h3 {
+    color: var(--text-primary);
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.code-editor-content {
+    padding: 1rem;
+    font-family: 'Consolas', 'Monaco', monospace;
+    flex-grow: 1;
+    position: relative;
+}
+
+/* Feedback Box Styles */
+.feedback-section {
+    background-color: var(--bg-chat);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    color: var(--text-primary);
+}
+
+.feedback-box {
+    flex-grow: 1;
+}
+
+.feedback-box h3 {
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+/* Test Results Styles */
+.test-result {
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 0.5rem;
+    background-color: var(--bg-message-received);
+    color: var(--text-message-received);
+}
+
+.test-result.success {
+    background-color: rgba(34, 197, 94, 0.1);
+    color: #22c55e;
+}
+
+.test-result.error {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+}
+
+/* Loading Indicator */
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+.loading-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--border-color);
+    border-top: 3px solid var(--bg-message-sent);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Challenge List Styles */
+.challenge-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.challenge-item {
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    border: 1px solid #e5e7eb;
+    cursor: pointer;
+}
+
+.challenge-item:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.challenge-item.active {
+    background-color: #dbeafe;
+    border-color: #93c5fd;
+    color: #1e40af;
+}
+
+/* Instructions Section */
+.instructions {
+    background-color: var(--bg-message-received);
+    color: var(--text-message-received);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-left: 4px solid var(--bg-message-sent);
+}
+
+.instructions h4 {
+    color: var(--text-primary);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+/* Run Button Styles */
+.run-button {
+    background-color: #22c55e;
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.run-button:hover {
+    background-color: #16a34a;
+    transform: translateY(-1px);
+}
+
+.run-button:active {
+    transform: translateY(0);
+}
+
+.run-button svg {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+/* Animations */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-slide-in {
+    animation: slideIn 0.3s ease-out;
+}
+
+/* Responsive Design */
+@media (max-width: 1280px) {
+    .challenges-container {
+        grid-template-columns: 1fr;
+        gap: 1px;
+    }
+    
+    .code-editor-section {
+        min-height: 400px;
+    }
+}
+
+/* Error and Success States */
+.error-state {
+    background-color: #fee2e2;
+    border: 1px solid #fecaca;
+    color: #991b1b;
+    padding: 0.75rem;
+    border-radius: 6px;
+    margin-top: 0.5rem;
+}
+
+.success-state {
+    background-color: #dcfce7;
+    border: 1px solid #bbf7d0;
+    color: #166534;
+    padding: 0.75rem;
+    border-radius: 6px;
+    margin-top: 0.5rem;
+} 

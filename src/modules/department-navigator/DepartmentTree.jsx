@@ -1,0 +1,1 @@
+export const DepartmentTree = () => <div>Department Tree</div>;

@@ -1,0 +1,1 @@
+export const useProgressTracker = () => ({ progress: 50 });
